@@ -343,3 +343,204 @@ h1 span { color: var(--accent); }
   .store-card h3 { font-size: 12px; }
   .store-action { bottom: 14px; left: 12px; }
 }
+
+.lookbook {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 75px 0 78px;
+}
+.lookbook-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 40px;
+}
+.lookbook-copy { max-width: 670px; }
+.lookbook-copy .eyebrow { margin-bottom: 14px; }
+.lookbook-copy h2 {
+  margin: 0 0 14px;
+  font: 400 clamp(36px, 4.5vw, 56px)/1.04 Georgia, "Times New Roman", serif;
+  letter-spacing: -1.6px;
+}
+.lookbook-copy h2 span { color: var(--accent); }
+.lookbook-copy > p:last-child {
+  max-width: 510px;
+  margin: 0;
+  color: #82766e;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.lookbook-total {
+  display: flex;
+  flex: 0 0 225px;
+  flex-direction: column;
+  gap: 7px;
+  padding: 4px 0 5px 22px;
+  border-left: 1px solid #d9c9be;
+}
+.lookbook-total > span {
+  color: #8e7c71;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+}
+.lookbook-total strong {
+  color: var(--accent-dark);
+  font: 400 34px/1 Georgia, "Times New Roman", serif;
+}
+.lookbook-total small { color: #8d8178; font-size: 9px; }
+.look-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 31px;
+}
+.look-card {
+  overflow: hidden;
+  border: 1px solid #e8dfd7;
+  background: var(--paper);
+}
+.look-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 224px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #eee8e0, #f8f4ee);
+}
+.look-art::before {
+  position: absolute;
+  width: 154px;
+  height: 154px;
+  border: 1px solid rgba(126, 91, 73, .15);
+  border-radius: 50%;
+  content: "";
+}
+.look-art::after {
+  position: absolute;
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.48);
+  content: "";
+}
+.look-number {
+  position: absolute;
+  z-index: 2;
+  top: 16px;
+  left: 17px;
+  color: #8e7c71;
+  font: 11px Georgia, "Times New Roman", serif;
+}
+.look-silhouette {
+  position: relative;
+  z-index: 1;
+  display: block;
+  background: var(--item-tone);
+  filter: drop-shadow(0 11px 8px rgba(58, 42, 33, .16));
+}
+.silhouette-polo {
+  width: 94px;
+  height: 130px;
+  clip-path: polygon(27% 0, 41% 14%, 59% 14%, 73% 0, 100% 18%, 85% 43%, 73% 36%, 77% 100%, 23% 100%, 27% 36%, 15% 43%, 0 18%);
+}
+.silhouette-trousers {
+  width: 95px;
+  height: 140px;
+  clip-path: polygon(14% 0, 86% 0, 98% 100%, 58% 100%, 50% 49%, 42% 100%, 2% 100%);
+}
+.silhouette-sneakers {
+  width: 144px;
+  height: 78px;
+  clip-path: polygon(4% 58%, 22% 58%, 39% 66%, 54% 51%, 67% 42%, 76% 52%, 83% 68%, 96% 76%, 100% 91%, 97% 100%, 0 100%, 0 75%);
+}
+.look-info { padding: 17px 18px 18px; }
+.look-category {
+  color: #927d71;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+.look-info h3 {
+  min-height: 42px;
+  margin: 8px 0 9px;
+  font: 500 17px/1.2 Georgia, "Times New Roman", serif;
+}
+.look-shade {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  color: #81766f;
+  font-size: 10px;
+}
+.look-swatch {
+  width: 11px;
+  height: 11px;
+  border: 1px solid rgba(40, 33, 30, .15);
+  border-radius: 50%;
+}
+.look-purchase {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding-top: 12px;
+  border-top: 1px solid #eee6de;
+  color: var(--accent-dark);
+  font-size: 10px;
+  font-weight: 700;
+}
+.look-purchase::after {
+  content: "Burberry ↗";
+  color: #8c7c72;
+  font-size: 9px;
+  font-weight: 500;
+}
+.lookbook-note {
+  margin: 16px 0 0;
+  color: #8c8178;
+  font-size: 9px;
+  line-height: 1.6;
+}
+
+@media (max-width: 1200px) {
+  .lookbook { width: calc(100% - 80px); }
+}
+@media (max-width: 800px) {
+  .lookbook { width: calc(100% - 48px); padding: 62px 0; }
+  .lookbook-heading { align-items: start; gap: 24px; }
+  .lookbook-total { flex-basis: 185px; }
+  .look-grid { gap: 11px; }
+  .look-info { padding: 15px 13px; }
+  .look-info h3 { font-size: 15px; }
+}
+@media (max-width: 560px) {
+  .lookbook { padding: 52px 0; }
+  .lookbook-heading { display: block; }
+  .lookbook-copy h2 { font-size: 38px; }
+  .lookbook-total {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 5px 12px;
+    margin-top: 22px;
+    padding: 14px 0 0;
+    border-top: 1px solid #d9c9be;
+    border-left: 0;
+  }
+  .lookbook-total strong { grid-row: span 2; justify-self: end; font-size: 30px; }
+  .look-grid { grid-template-columns: 1fr; gap: 10px; margin-top: 20px; }
+  .look-card { display: grid; grid-template-columns: 118px minmax(0, 1fr); }
+  .look-art { height: 100%; min-height: 168px; }
+  .look-art::before { width: 100px; height: 100px; }
+  .look-art::after { width: 76px; height: 76px; }
+  .look-number { top: 10px; left: 11px; font-size: 9px; }
+  .silhouette-polo { width: 58px; height: 100px; }
+  .silhouette-trousers { width: 58px; height: 104px; }
+  .silhouette-sneakers { width: 90px; height: 52px; }
+  .look-info { padding: 14px 12px; }
+  .look-info h3 { min-height: 0; margin: 6px 0; font-size: 15px; }
+  .look-purchase { margin-top: 10px; padding-top: 9px; font-size: 9px; }
+  .look-purchase::after { font-size: 8px; }
+}

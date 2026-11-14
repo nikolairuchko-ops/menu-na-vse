@@ -33,9 +33,44 @@ const stores = [
   { name: "Mulberry", city: "london", url: "https://www.mulberry.com/gb/shop/women", description: "Британский бренд сумок, аксессуаров и женской одежды.", mark: "M", color: "#f0e9e0", ink: "#806344", types: ["clothing", "bags", "shoes", "accessories"], tags: "малберри сумки великобритания лондон" },
 ];
 
+const lookItems = [
+  {
+    number: "01",
+    category: "ВЕРХ",
+    shape: "polo",
+    color: "#526652",
+    shade: "Marsh green",
+    name: "Long-sleeve Cotton Polo Shirt",
+    price: 355,
+    url: "https://uk.burberry.com/long-sleeve-cotton-polo-shirt-p81324301",
+  },
+  {
+    number: "02",
+    category: "НИЗ",
+    shape: "trousers",
+    color: "#cdb895",
+    shade: "Dune beige",
+    name: "Cotton Chinos",
+    price: 495,
+    url: "https://uk.burberry.com/cotton-chinos-p81279021",
+  },
+  {
+    number: "03",
+    category: "ОБУВЬ",
+    shape: "sneakers",
+    color: "#e7dfd1",
+    shade: "White / sand beige",
+    name: "Leather and Check Terrace Sneakers",
+    price: 555,
+    url: "https://uk.burberry.com/leather-and-check-terrace-sneakers-p81086491",
+  },
+];
+
 const cityContainer = document.querySelector("#cities");
 const typeContainer = document.querySelector("#types");
 const cardContainer = document.querySelector("#cards");
+const lookItemsContainer = document.querySelector("#look-items");
+const lookTotal = document.querySelector("#look-total");
 const searchInput = document.querySelector("#search");
 const resultsLabel = document.querySelector("#results-label");
 const emptyState = document.querySelector("#empty-state");
@@ -43,6 +78,64 @@ const resetButton = document.querySelector("#reset");
 
 let activeCity = "all";
 let activeType = "all";
+
+function formatPrice(price) {
+  return new Intl.NumberFormat("en-GB", {
+    style: "currency",
+    currency: "GBP",
+    maximumFractionDigits: 0,
+  }).format(price);
+}
+
+function createLookItem(item) {
+  const article = document.createElement("article");
+  article.className = "look-card";
+
+  const artwork = document.createElement("div");
+  artwork.className = `look-art look-art-${item.shape}`;
+  artwork.style.setProperty("--item-tone", item.color);
+  artwork.setAttribute("aria-hidden", "true");
+
+  const number = document.createElement("span");
+  number.className = "look-number";
+  number.textContent = item.number;
+  const silhouette = document.createElement("span");
+  silhouette.className = `look-silhouette silhouette-${item.shape}`;
+  artwork.append(number, silhouette);
+
+  const info = document.createElement("div");
+  info.className = "look-info";
+  const category = document.createElement("span");
+  category.className = "look-category";
+  category.textContent = item.category;
+  const title = document.createElement("h3");
+  title.textContent = item.name;
+  const shade = document.createElement("p");
+  shade.className = "look-shade";
+  const swatch = document.createElement("span");
+  swatch.className = "look-swatch";
+  swatch.style.backgroundColor = item.color;
+  swatch.setAttribute("aria-hidden", "true");
+  shade.append(swatch, document.createTextNode(item.shade));
+
+  const purchase = document.createElement("a");
+  purchase.className = "look-purchase";
+  purchase.href = item.url;
+  purchase.target = "_blank";
+  purchase.rel = "noopener noreferrer";
+  purchase.textContent = `Купить · ${formatPrice(item.price)}`;
+  purchase.setAttribute("aria-label", `${item.name}, ${formatPrice(item.price)} — открыть на сайте Burberry`);
+
+  info.append(category, title, shade, purchase);
+  article.append(artwork, info);
+  return article;
+}
+
+function renderLook() {
+  lookItemsContainer.replaceChildren(...lookItems.map(createLookItem));
+  const total = lookItems.reduce((sum, item) => sum + item.price, 0);
+  lookTotal.textContent = formatPrice(total);
+}
 
 function createFilterButton(id, label, selected, onSelect, count) {
   const button = document.createElement("button");
@@ -183,5 +276,6 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+renderLook();
 renderFilters();
 renderStores();
