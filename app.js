@@ -18,6 +18,8 @@ const looks = [
         shade: "Dark navy",
         tone: "#26354a",
         shape: "silhouette-knit",
+        image:
+          "https://www.apcstore.com/cdn/shop/files/WVAXU-F23533IAK_00.jpg?v=1784640134&width=1000",
         price: 290,
         url: "https://www.apcstore.com/products/navy-blue-high-neck-sweater-iak-wvaxu-f23533",
       },
@@ -28,6 +30,8 @@ const looks = [
         shade: "Indigo",
         tone: "#52647b",
         shape: "silhouette-trousers",
+        image:
+          "https://www.apcstore.com/cdn/shop/files/COZZI-F09181IAI_001.jpg?v=1770893333&width=1000",
         price: 250,
         url: "https://www.apcstore.com/products/elisabeth-jeans-iai-cozzi-f09181",
       },
@@ -38,6 +42,8 @@ const looks = [
         shade: "Noir · smooth calfskin",
         tone: "#282624",
         shape: "silhouette-boots",
+        image:
+          "https://www.apcstore.com/cdn/shop/files/PXCCY-F55053LZZ_01.jpg?v=1784641644&width=1000",
         price: 650,
         url: "https://www.apcstore.com/products/leather-boots-lzz-pxccy-f55053",
       },
@@ -64,6 +70,8 @@ const looks = [
         shade: "Marsh green",
         tone: "#66745e",
         shape: "silhouette-polo",
+        image:
+          "https://assets.burberry.com/is/image/Burberryltd/F620C0BF-AE69-4CDA-ADCB-C2E2909B0076?$BBY_V3_SL_1$&wid=1000&hei=1000",
         price: 355,
         url: "https://uk.burberry.com/long-sleeve-cotton-polo-shirt-p81324301",
       },
@@ -74,6 +82,8 @@ const looks = [
         shade: "Dune beige",
         tone: "#bca987",
         shape: "silhouette-trousers",
+        image:
+          "https://assets.burberry.com/is/image/Burberryltd/576C5CA0-7071-46CE-9C72-8A9756A2D6FD?$BBY_V3_SL_1$&wid=1000&hei=1000",
         price: 495,
         url: "https://uk.burberry.com/cotton-chinos-p81279021",
       },
@@ -84,6 +94,8 @@ const looks = [
         shade: "White / sand beige",
         tone: "#e5e0d5",
         shape: "silhouette-sneakers",
+        image:
+          "https://assets.burberry.com/is/image/Burberryltd/DAEBBD3D-4BB7-4E59-AF1B-257E03B3A07F?$BBY_V3_SL_1$&wid=1000&hei=1000",
         price: 555,
         url: "https://uk.burberry.com/leather-and-check-terrace-sneakers-p81086491",
       },
@@ -184,6 +196,25 @@ function createProductCard(item, index) {
   silhouette.className = `look-silhouette ${item.shape}`;
   silhouette.setAttribute("aria-hidden", "true");
   artwork.append(number, silhouette);
+
+  if (item.image) {
+    artwork.classList.add("has-product-image");
+    const image = document.createElement("img");
+    image.className = "product-image";
+    image.src = item.image;
+    image.alt = `${item.brand} ${item.name}, ${item.shade}`;
+    image.loading = "lazy";
+    image.addEventListener("error", () => {
+      artwork.classList.remove("has-product-image");
+      image.remove();
+    });
+    artwork.append(image);
+  } else {
+    const illustrationLabel = document.createElement("span");
+    illustrationLabel.className = "illustration-label";
+    illustrationLabel.textContent = "Иллюстрация";
+    artwork.append(illustrationLabel);
+  }
 
   const info = document.createElement("div");
   info.className = "look-info";
