@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Удобный каталог полезных интерфейсов: магазины, сервисы и службы в одном месте."
+    />
+    <meta name="theme-color" content="#f6f7f2" />
+    <title>Меню на всё — нужные сайты под рукой</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Меню на всё — на главную">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M7 9.5h18M7 16h18M7 22.5h11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+            <circle cx="23" cy="22.5" r="2" fill="currentColor" />
+          </svg>
+        </span>
+        <span class="brand-name">меню<span>на всё</span></span>
+      </a>
+      <nav class="topbar-nav" aria-label="Основная навигация">
+        <a href="#catalog">Каталог</a>
+        <a href="#about">О проекте</a>
+      </nav>
+      <a class="topbar-note" href="#catalog">
+        <span class="status-dot" aria-hidden="true"></span>
+        Всё нужное — рядом
+      </a>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> ВАШИ ЛЮБИМЫЕ САЙТЫ, СОБРАННЫЕ ВМЕСТЕ</p>
+          <h1 id="hero-title">Нужное —<br />всегда <span>под рукой.</span></h1>
+          <p class="hero-description">
+            Магазины, сервисы и службы — больше не нужно вспоминать, где что искать.
+          </p>
+          <a class="hero-link" href="#catalog">
+            Открыть каталог
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M4 10h12m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-orbit orbit-one"></div>
+          <div class="art-orbit orbit-two"></div>
+          <div class="art-sun"></div>
+          <div class="art-card art-card-main">
+            <span class="art-card-icon art-icon-shop">✳</span>
+            <span><b>Всё рядом</b><small>в одном меню</small></span>
+            <span class="art-card-arrow">↗</span>
+          </div>
+          <div class="art-card art-card-top">
+            <span class="art-mini-icon mini-blue">⌕</span>
+            <span><b>Нашлось!</b><small>за пару секунд</small></span>
+          </div>
+          <div class="art-card art-card-bottom">
+            <span class="art-mini-icon mini-pink">♡</span>
+            <span><b>По категориям</b><small>легко и понятно</small></span>
+          </div>
+          <div class="art-spark spark-one">✳</div>
+          <div class="art-spark spark-two">✦</div>
+        </div>
+        <div class="hero-footnote"><span>01</span> МЕНЬШЕ ПОИСКА — БОЛЬШЕ ВРЕМЕНИ</div>
+      </section>
+
+      <section class="catalog-section" id="catalog" aria-labelledby="catalog-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow eyebrow-dark">ВАШ ЦИФРОВОЙ НАБОР</p>
+            <h2 id="catalog-title">Куда заглянем?</h2>
+          </div>
+          <p class="catalog-caption">Выбирайте категорию или просто начните вводить название</p>
+        </div>
+
+        <div class="catalog-toolbar">
+          <div class="category-list" id="categories" aria-label="Фильтр по категориям"></div>
+          <label class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7" />
+              <path d="m16 16 4.2 4.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+            </svg>
+            <span class="visually-hidden">Поиск по каталогу</span>
+            <input id="search" type="search" placeholder="Например, доставка" autocomplete="off" />
+            <kbd>/</kbd>
+          </label>
+        </div>
+
+        <div class="results-line" aria-live="polite">
+          <p id="results-label"></p>
+          <button class="reset-button" id="reset" type="button" hidden>Сбросить фильтры</button>
+        </div>
+        <div class="card-grid" id="cards"></div>
+        <div class="empty-state" id="empty-state" hidden>
+          <span class="empty-icon" aria-hidden="true">⌕</span>
+          <h3>Пока ничего не нашлось</h3>
+          <p>Попробуйте изменить запрос или выбрать другую категорию.</p>
+          <button class="button-secondary" id="empty-reset" type="button">Показать все сайты</button>
+        </div>
+      </section>
+
+      <section class="about-strip" id="about">
+        <div class="about-mark" aria-hidden="true">✳</div>
+        <div>
+          <p class="eyebrow eyebrow-dark">ПРОСТО И УДОБНО</p>
+          <h2>Один адрес. Много возможностей.</h2>
+          <p>«Меню на всё» — небольшая подборка знакомых сайтов, чтобы повседневные дела решались быстрее.</p>
+        </div>
+        <a href="#catalog" class="about-top-link">К каталогу <span aria-hidden="true">↑</span></a>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a class="brand brand-small" href="#">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M7 9.5h18M7 16h18M7 22.5h11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+            <circle cx="23" cy="22.5" r="2" fill="currentColor" />
+          </svg>
+        </span>
+        <span class="brand-name">меню<span>на всё</span></span>
+      </a>
+      <p>Собрано для повседневных дел <span aria-hidden="true">✳</span></p>
+      <a href="#hero-title">Наверх ↑</a>
+    </footer>
+    <noscript><p class="noscript">Для работы каталога необходимо включить JavaScript.</p></noscript>
+  </body>
+</html>
