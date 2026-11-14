@@ -5,44 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Шопинг-гид по официальным онлайн-магазинам брендов Дубая, Парижа и Лондона."
+      content="Редакционная лента товаров культовых брендов: готовые образы, цены и прямые ссылки на покупку."
     />
     <meta name="theme-color" content="#faf7f2" />
-    <title>Меню на всё — шопинг-гид по модным столицам</title>
+    <title>Меню на всё — редакционная витрина</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="app.js" defer></script>
   </head>
   <body>
     <header class="topbar">
       <a class="brand" href="#" aria-label="Меню на всё — на главную">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none">
-            <path d="M7 9.5h18M7 16h18M7 22.5h11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
-            <circle cx="23" cy="22.5" r="2" fill="currentColor" />
-          </svg>
-        </span>
-        <span class="brand-name">меню<span>на всё</span></span>
+        <span class="brand-mark" aria-hidden="true">M<span class="brand-seal">·</span></span>
+        <span class="brand-name">МЕНЮ НА ВСЁ<small>STYLE ATELIER · 01</small></span>
       </a>
       <nav class="topbar-nav" aria-label="Основная навигация">
-        <a href="#lookbook">Образ дня</a>
-        <a href="#catalog">Магазины</a>
+        <a href="#lookbook">Лента</a>
+        <a href="#about">О проекте</a>
       </nav>
-      <a class="topbar-note" href="#catalog">
+      <a class="topbar-note" href="#lookbook">
         <span class="status-dot" aria-hidden="true"></span>
-        Дубай · Париж · Лондон
+        PARIS · LONDON · DUBAI
       </a>
     </header>
 
     <main>
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow"><span></span> ВАШ ПЕРСОНАЛЬНЫЙ ШОПИНГ-ГИД</p>
-          <h1 id="hero-title">Мода мира —<br /><span>в одном месте.</span></h1>
+          <p class="eyebrow"><span></span> CURATED STYLE FEED · NO. 01</p>
+          <h1 id="hero-title">Найдено для вас —<br /><span>сочетается вместе.</span></h1>
           <p class="hero-description">
-            Находите бренды, готовые сочетания и вещи для повседневных образов. Покупка — напрямую у продавца.
+            Редакционные комплекты из актуальных витрин культовых марок. Каждая вещь — прямая ссылка на продавца.
           </p>
           <a class="hero-link" href="#lookbook">
-            Смотреть casual-образ
+            Смотреть подборки
             <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
               <path d="M4 10h12m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -54,103 +49,58 @@
           <div class="art-sun"></div>
           <div class="art-card art-card-main">
             <span class="art-card-icon art-icon-shop">✳</span>
-            <span><b>Модный маршрут</b><small>Дубай · Париж · Лондон</small></span>
+            <span><b>Подборка дня</b><small>образ из вещей одной палитры</small></span>
             <span class="art-card-arrow">↗</span>
           </div>
           <div class="art-card art-card-top">
             <span class="art-mini-icon mini-blue">⌕</span>
-            <span><b>Ваши бренды</b><small>в одном каталоге</small></span>
+            <span><b>Отобрано</b><small>по силуэту и оттенкам</small></span>
           </div>
           <div class="art-card art-card-bottom">
             <span class="art-mini-icon mini-pink">♡</span>
-            <span><b>Свежие коллекции</b><small>на сайтах брендов</small></span>
+            <span><b>Покупка напрямую</b><small>на сайте продавца</small></span>
           </div>
           <div class="art-spark spark-one">✳</div>
           <div class="art-spark spark-two">✦</div>
         </div>
-        <div class="hero-footnote"><span>01</span> ГОТОВОЕ СОЧЕТАНИЕ · ПРЯМЫЕ ССЫЛКИ</div>
+        <div class="hero-footnote"><span>01</span> НАЙТИ · СОЧЕТАТЬ · КУПИТЬ</div>
       </section>
 
       <section class="lookbook" id="lookbook" aria-labelledby="look-title">
         <div class="lookbook-heading">
           <div class="lookbook-copy">
-            <p class="eyebrow eyebrow-dark">ОБРАЗ 01 · MEN'S CITY CASUAL · LONDON</p>
-            <h2 id="look-title">Спокойная классика<br /><span>на каждый день.</span></h2>
-            <p>Приглушённо-зелёный верх, песочные chinos и светлые кеды — природная палитра, три вещи, собранные в цельный городской образ.</p>
+            <p class="eyebrow eyebrow-dark" id="look-meta"></p>
+            <h2 id="look-title"></h2>
+            <p id="look-summary"></p>
+            <div class="look-tabs" id="look-tabs" role="group" aria-label="Выбрать образ"></div>
           </div>
           <div class="lookbook-total">
-            <span>КОМПЛЕКТ · 3 ВЕЩИ</span>
+            <span id="look-count"></span>
             <strong id="look-total"></strong>
-            <small>GBP · цены проверены <time datetime="2026-11-14">14.11.2026</time></small>
+            <small id="look-price-note"></small>
           </div>
         </div>
         <div class="look-grid" id="look-items"></div>
-        <p class="lookbook-note">Подборка по официальным карточкам Burberry UK. Цена и наличие размеров могут измениться; итог не включает доставку и налоги.</p>
-      </section>
-
-      <section class="catalog-section" id="catalog" aria-labelledby="catalog-title">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow eyebrow-dark">ВАШ ЦИФРОВОЙ НАБОР</p>
-            <h2 id="catalog-title">Ещё магазины</h2>
-          </div>
-          <p class="catalog-caption">Выберите город, бренд или тип вещи — и переходите к коллекции</p>
-        </div>
-
-        <div class="catalog-toolbar">
-          <div class="category-list" id="cities" aria-label="Фильтр по городу"></div>
-          <label class="search-box">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7" />
-              <path d="m16 16 4.2 4.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
-            </svg>
-            <span class="visually-hidden">Поиск бренда, магазина или вещи</span>
-            <input id="search" type="search" placeholder="Например, сумка или Chanel" autocomplete="off" />
-            <kbd>/</kbd>
-          </label>
-        </div>
-
-        <div class="style-filter">
-          <span class="filter-label">ИЩУ</span>
-          <div class="category-list" id="types" aria-label="Фильтр по типу вещи"></div>
-          <span class="agent-note">Демо-агент · без автоотслеживания наличия</span>
-        </div>
-
-        <div class="results-line" aria-live="polite">
-          <p id="results-label"></p>
-          <button class="reset-button" id="reset" type="button" hidden>Сбросить выбор</button>
-        </div>
-        <div class="card-grid" id="cards"></div>
-        <div class="empty-state" id="empty-state" hidden>
-          <span class="empty-icon" aria-hidden="true">⌕</span>
-          <h3>Не нашли подходящий магазин</h3>
-          <p>Измените город, тип вещи или запрос — и попробуйте ещё раз.</p>
-          <button class="button-secondary" id="empty-reset" type="button">Показать все магазины</button>
-        </div>
+        <p class="lookbook-note" id="lookbook-note"></p>
       </section>
 
       <section class="about-strip" id="about">
         <div class="about-mark" aria-hidden="true">✳</div>
         <div>
-          <p class="eyebrow eyebrow-dark">ЧЕСТНЫЙ ШОПИНГ-ГИД</p>
-          <h2>Каталог помогает найти. Покупка — у бренда.</h2>
-          <p>Мы ведём на официальные онлайн-магазины. Наличие размеров, цены и доставка зависят от выбранного региона и проверяются на сайте продавца.</p>
+          <p class="eyebrow eyebrow-dark">РЕДАКЦИОННЫЙ ПРИНЦИП</p>
+          <h2>Меньше вкладок. Больше цельных образов.</h2>
+          <p>В ленте — отобранные товары, сочетания и проверяемые ссылки. Цены и наличие меняются у продавца; автоматического мониторинга и оформления заказа здесь нет.</p>
         </div>
-        <a href="#catalog" class="about-top-link">К каталогу <span aria-hidden="true">↑</span></a>
+        <a href="#lookbook" class="about-top-link">К ленте <span aria-hidden="true">↑</span></a>
       </section>
     </main>
 
     <footer class="footer">
       <a class="brand brand-small" href="#">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none">
-            <path d="M7 9.5h18M7 16h18M7 22.5h11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
-            <circle cx="23" cy="22.5" r="2" fill="currentColor" />
-          </svg>
-        </span>
-        <span class="brand-name">меню<span>на всё</span></span>
+        <span class="brand-mark" aria-hidden="true">M<span class="brand-seal">·</span></span>
+        <span class="brand-name">МЕНЮ НА ВСЁ<small>STYLE ATELIER · 01</small></span>
       </a>
-      <p>Подборка официальных онлайн-магазинов <span aria-hidden="true">✳</span></p>
+      <p>Кураторская лента товаров <span aria-hidden="true">✳</span></p>
       <a href="#hero-title">Наверх ↑</a>
     </footer>
     <noscript><p class="noscript">Для работы каталога необходимо включить JavaScript.</p></noscript>
