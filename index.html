@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Удобный каталог полезных интерфейсов: магазины, сервисы и службы в одном месте."
+      content="Шопинг-гид по официальным онлайн-магазинам брендов Дубая, Парижа и Лондона."
     />
     <meta name="theme-color" content="#f6f7f2" />
-    <title>Меню на всё — нужные сайты под рукой</title>
+    <title>Меню на всё — шопинг-гид по модным столицам</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="app.js" defer></script>
   </head>
@@ -29,20 +29,20 @@
       </nav>
       <a class="topbar-note" href="#catalog">
         <span class="status-dot" aria-hidden="true"></span>
-        Всё нужное — рядом
+        Дубай · Париж · Лондон
       </a>
     </header>
 
     <main>
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow"><span></span> ВАШИ ЛЮБИМЫЕ САЙТЫ, СОБРАННЫЕ ВМЕСТЕ</p>
-          <h1 id="hero-title">Нужное —<br />всегда <span>под рукой.</span></h1>
+          <p class="eyebrow"><span></span> ВАШ ПЕРСОНАЛЬНЫЙ ШОПИНГ-ГИД</p>
+          <h1 id="hero-title">Мода мира —<br /><span>в одном месте.</span></h1>
           <p class="hero-description">
-            Магазины, сервисы и службы — больше не нужно вспоминать, где что искать.
+            Находите известные бренды и универмаги Дубая, Парижа и Лондона. Актуальные коллекции — на официальных сайтах.
           </p>
           <a class="hero-link" href="#catalog">
-            Открыть каталог
+            Найти свой стиль
             <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
               <path d="M4 10h12m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -54,64 +54,70 @@
           <div class="art-sun"></div>
           <div class="art-card art-card-main">
             <span class="art-card-icon art-icon-shop">✳</span>
-            <span><b>Всё рядом</b><small>в одном меню</small></span>
+            <span><b>Модный маршрут</b><small>Дубай · Париж · Лондон</small></span>
             <span class="art-card-arrow">↗</span>
           </div>
           <div class="art-card art-card-top">
             <span class="art-mini-icon mini-blue">⌕</span>
-            <span><b>Нашлось!</b><small>за пару секунд</small></span>
+            <span><b>Ваши бренды</b><small>в одном каталоге</small></span>
           </div>
           <div class="art-card art-card-bottom">
             <span class="art-mini-icon mini-pink">♡</span>
-            <span><b>По категориям</b><small>легко и понятно</small></span>
+            <span><b>Свежие коллекции</b><small>на сайтах брендов</small></span>
           </div>
           <div class="art-spark spark-one">✳</div>
           <div class="art-spark spark-two">✦</div>
         </div>
-        <div class="hero-footnote"><span>01</span> МЕНЬШЕ ПОИСКА — БОЛЬШЕ ВРЕМЕНИ</div>
+        <div class="hero-footnote"><span>01</span> БЫСТРЫЙ ПУТЬ К ОФИЦИАЛЬНЫМ МАГАЗИНАМ</div>
       </section>
 
       <section class="catalog-section" id="catalog" aria-labelledby="catalog-title">
         <div class="section-heading">
           <div>
             <p class="eyebrow eyebrow-dark">ВАШ ЦИФРОВОЙ НАБОР</p>
-            <h2 id="catalog-title">Куда заглянем?</h2>
+            <h2 id="catalog-title">Модные адреса</h2>
           </div>
-          <p class="catalog-caption">Выбирайте категорию или просто начните вводить название</p>
+          <p class="catalog-caption">Выберите город, бренд или тип вещи — и переходите к коллекции</p>
         </div>
 
         <div class="catalog-toolbar">
-          <div class="category-list" id="categories" aria-label="Фильтр по категориям"></div>
+          <div class="category-list" id="cities" aria-label="Фильтр по городу"></div>
           <label class="search-box">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7" />
               <path d="m16 16 4.2 4.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
             </svg>
-            <span class="visually-hidden">Поиск по каталогу</span>
-            <input id="search" type="search" placeholder="Например, доставка" autocomplete="off" />
+            <span class="visually-hidden">Поиск бренда, магазина или вещи</span>
+            <input id="search" type="search" placeholder="Например, сумка или Chanel" autocomplete="off" />
             <kbd>/</kbd>
           </label>
         </div>
 
+        <div class="style-filter">
+          <span class="filter-label">ИЩУ</span>
+          <div class="category-list" id="types" aria-label="Фильтр по типу вещи"></div>
+          <span class="agent-note">Демо-агент · без автоотслеживания наличия</span>
+        </div>
+
         <div class="results-line" aria-live="polite">
           <p id="results-label"></p>
-          <button class="reset-button" id="reset" type="button" hidden>Сбросить фильтры</button>
+          <button class="reset-button" id="reset" type="button" hidden>Сбросить выбор</button>
         </div>
         <div class="card-grid" id="cards"></div>
         <div class="empty-state" id="empty-state" hidden>
           <span class="empty-icon" aria-hidden="true">⌕</span>
-          <h3>Пока ничего не нашлось</h3>
-          <p>Попробуйте изменить запрос или выбрать другую категорию.</p>
-          <button class="button-secondary" id="empty-reset" type="button">Показать все сайты</button>
+          <h3>Не нашли подходящий магазин</h3>
+          <p>Измените город, тип вещи или запрос — и попробуйте ещё раз.</p>
+          <button class="button-secondary" id="empty-reset" type="button">Показать все магазины</button>
         </div>
       </section>
 
       <section class="about-strip" id="about">
         <div class="about-mark" aria-hidden="true">✳</div>
         <div>
-          <p class="eyebrow eyebrow-dark">ПРОСТО И УДОБНО</p>
-          <h2>Один адрес. Много возможностей.</h2>
-          <p>«Меню на всё» — небольшая подборка знакомых сайтов, чтобы повседневные дела решались быстрее.</p>
+          <p class="eyebrow eyebrow-dark">ЧЕСТНЫЙ ШОПИНГ-ГИД</p>
+          <h2>Каталог помогает найти. Покупка — у бренда.</h2>
+          <p>Мы ведём на официальные онлайн-магазины. Наличие размеров, цены и доставка зависят от выбранного региона и проверяются на сайте продавца.</p>
         </div>
         <a href="#catalog" class="about-top-link">К каталогу <span aria-hidden="true">↑</span></a>
       </section>
@@ -127,7 +133,7 @@
         </span>
         <span class="brand-name">меню<span>на всё</span></span>
       </a>
-      <p>Собрано для повседневных дел <span aria-hidden="true">✳</span></p>
+      <p>Подборка официальных онлайн-магазинов <span aria-hidden="true">✳</span></p>
       <a href="#hero-title">Наверх ↑</a>
     </footer>
     <noscript><p class="noscript">Для работы каталога необходимо включить JavaScript.</p></noscript>

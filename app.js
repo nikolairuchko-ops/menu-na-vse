@@ -1,120 +1,174 @@
-const categories = [
-  { id: "services", label: "Сервисы" },
-  { id: "shops", label: "Магазины" },
-  { id: "delivery", label: "Службы" },
+const cities = [
+  { id: "dubai", label: "Дубай" },
+  { id: "paris", label: "Париж" },
+  { id: "london", label: "Лондон" },
 ];
 
-const sites = [
-  { name: "Яндекс", category: "services", url: "https://yandex.ru", description: "Поиск, карты, погода и другие полезные инструменты.", mark: "Я", color: "#fff0cc", ink: "#d18b16", tags: "поиск карты погода" },
-  { name: "VK", category: "services", url: "https://vk.com", description: "Общение, музыка, видео и новости в одной ленте.", mark: "vk", color: "#e5edff", ink: "#3973df", tags: "общение соцсеть музыка" },
-  { name: "Госуслуги", category: "services", url: "https://www.gosuslugi.ru", description: "Государственные услуги и документы онлайн.", mark: "г", color: "#e4edff", ink: "#3971bf", tags: "документы государство" },
-  { name: "СберБанк Онлайн", category: "services", url: "https://online.sberbank.ru", description: "Банк, переводы и платежи — в личном кабинете.", mark: "с", color: "#e3f2e7", ink: "#24925b", tags: "банк деньги платежи" },
-  { name: "Ozon", category: "shops", url: "https://www.ozon.ru", description: "Миллионы товаров с доставкой до двери.", mark: "oz", color: "#e6e9ff", ink: "#4354c7", tags: "покупки товары маркетплейс" },
-  { name: "Wildberries", category: "shops", url: "https://www.wildberries.ru", description: "Одежда, дом, электроника и многое другое.", mark: "wb", color: "#f6e5f1", ink: "#a83285", tags: "покупки одежда маркетплейс" },
-  { name: "Яндекс Маркет", category: "shops", url: "https://market.yandex.ru", description: "Сравнивайте товары, цены и отзывы.", mark: "м", color: "#fff0de", ink: "#d98529", tags: "покупки сравнить товары" },
-  { name: "Мегамаркет", category: "shops", url: "https://megamarket.ru", description: "Покупки для дома, семьи и каждого дня.", mark: "м", color: "#e2f1e7", ink: "#288a54", tags: "покупки товары дом" },
-  { name: "Самокат", category: "delivery", url: "https://samokat.ru", description: "Продукты и готовая еда с быстрой доставкой.", mark: "с", color: "#f7e7e7", ink: "#dc6262", tags: "еда продукты доставка" },
-  { name: "Купер", category: "delivery", url: "https://kuper.ru", description: "Заказ продуктов и товаров из магазинов.", mark: "к", color: "#e5f0e2", ink: "#4b8a46", tags: "еда продукты доставка" },
-  { name: "Яндекс Go", category: "delivery", url: "https://go.yandex", description: "Такси, доставка и поездки по городу.", mark: "go", color: "#fff1d9", ink: "#d88b13", tags: "такси транспорт доставка" },
-  { name: "Почта России", category: "delivery", url: "https://www.pochta.ru", description: "Отслеживание посылок и почтовые услуги.", mark: "п", color: "#e9e9ff", ink: "#584fc0", tags: "посылки отправления почта" },
+const types = [
+  { id: "clothing", label: "Одежда" },
+  { id: "bags", label: "Сумки" },
+  { id: "shoes", label: "Обувь" },
+  { id: "accessories", label: "Аксессуары" },
 ];
 
-const categoryContainer = document.querySelector("#categories");
+const stores = [
+  { name: "The Dubai Mall", city: "dubai", url: "https://thedubaimall.com/en/shop", description: "Официальный каталог магазинов крупнейшего торгового центра Дубая.", mark: "DM", color: "#e9eee4", ink: "#536c4d", types: ["clothing", "bags", "shoes", "accessories"], tags: "молл торговый центр дубай одежда сумки обувь" },
+  { name: "Louis Vuitton", city: "dubai", url: "https://ae.louisvuitton.com/eng-ae/homepage", description: "Коллекции одежды, сумок и аксессуаров в онлайн-магазине для ОАЭ.", mark: "LV", color: "#efe8df", ink: "#6d5947", types: ["clothing", "bags", "shoes", "accessories"], tags: "люкс дубай оаэ" },
+  { name: "CHANEL", city: "dubai", url: "https://www.chanel.com/ae/", description: "Мода, сумки, обувь и аксессуары на официальном сайте региона.", mark: "C", color: "#f0e9e9", ink: "#625353", types: ["clothing", "bags", "shoes", "accessories"], tags: "шанель дубай оаэ" },
+  { name: "Dior", city: "dubai", url: "https://www.dior.com/en_ae", description: "Женская мода и аксессуары из актуальных коллекций Dior.", mark: "D", color: "#e9edf0", ink: "#546473", types: ["clothing", "bags", "shoes", "accessories"], tags: "диор дубай оаэ" },
+  { name: "Gucci", city: "dubai", url: "https://www.gucci.com/ae/en_gb/", description: "Официальный онлайн-магазин Gucci для покупателей в ОАЭ.", mark: "G", color: "#e8efe7", ink: "#50694d", types: ["clothing", "bags", "shoes", "accessories"], tags: "гуччи дубай оаэ" },
+  { name: "Prada", city: "dubai", url: "https://www.prada.com/ae/en.html", description: "Одежда, сумки и обувь в официальном магазине Prada.", mark: "PR", color: "#ece9e2", ink: "#625b4b", types: ["clothing", "bags", "shoes", "accessories"], tags: "прада дубай оаэ" },
+
+  { name: "Galeries Lafayette", city: "paris", url: "https://www.galerieslafayette.com/", description: "Французский универмаг: одежда, сумки, обувь и дизайнерские бренды.", mark: "GL", color: "#f0e7e7", ink: "#865656", types: ["clothing", "bags", "shoes", "accessories"], tags: "галери лафайет универмаг франция париж" },
+  { name: "Printemps", city: "paris", url: "https://www.printemps.com/fr/fr", description: "Мода и дизайнерские марки в парижском универмаге Printemps.", mark: "P", color: "#eee8e2", ink: "#78644f", types: ["clothing", "bags", "shoes", "accessories"], tags: "прентан универмаг франция париж" },
+  { name: "Le Bon Marché", city: "paris", url: "https://www.lebonmarche.com/", description: "Подборка моды, аксессуаров и французских дизайнеров.", mark: "LB", color: "#e8ede7", ink: "#566c55", types: ["clothing", "bags", "shoes", "accessories"], tags: "бон марше универмаг франция париж" },
+  { name: "Sézane", city: "paris", url: "https://www.sezane.com/fr", description: "Французский бренд женской одежды, обуви и аксессуаров.", mark: "S", color: "#f1e9e1", ink: "#8a684d", types: ["clothing", "bags", "shoes", "accessories"], tags: "сезан франция париж" },
+  { name: "24S", city: "paris", url: "https://www.24s.com/en-fr", description: "Парижская онлайн-платформа с подборкой модных брендов.", mark: "24", color: "#e7eaf0", ink: "#505c73", types: ["clothing", "bags", "shoes", "accessories"], tags: "24с люкс франция париж" },
+  { name: "Saint Laurent", city: "paris", url: "https://www.ysl.com/fr-fr", description: "Официальный магазин Saint Laurent для французского региона.", mark: "SL", color: "#ece9e5", ink: "#5b554d", types: ["clothing", "bags", "shoes", "accessories"], tags: "ив сен лоран франция париж" },
+
+  { name: "Harrods", city: "london", url: "https://www.harrods.com/en-gb/", description: "Лондонский универмаг с международными модными марками.", mark: "H", color: "#e9eee6", ink: "#53664b", types: ["clothing", "bags", "shoes", "accessories"], tags: "харродс универмаг великобритания лондон" },
+  { name: "Selfridges", city: "london", url: "https://www.selfridges.com/GB/en/", description: "Дизайнерская одежда, обувь и аксессуары из Лондона.", mark: "SE", color: "#f0e9e5", ink: "#7a594c", types: ["clothing", "bags", "shoes", "accessories"], tags: "селфриджес универмаг великобритания лондон" },
+  { name: "Burberry", city: "london", url: "https://uk.burberry.com/", description: "Британский модный дом: одежда, сумки и аксессуары.", mark: "B", color: "#eee9df", ink: "#786646", types: ["clothing", "bags", "shoes", "accessories"], tags: "берберри великобритания лондон" },
+  { name: "Liberty", city: "london", url: "https://www.libertylondon.com/uk/", description: "Лондонский универмаг и подборка независимых дизайнеров.", mark: "L", color: "#e7eee8", ink: "#4b7255", types: ["clothing", "bags", "shoes", "accessories"], tags: "либёрти универмаг великобритания лондон" },
+  { name: "Mulberry", city: "london", url: "https://www.mulberry.com/gb/shop/women", description: "Британский бренд сумок, аксессуаров и женской одежды.", mark: "M", color: "#f0e9e0", ink: "#806344", types: ["clothing", "bags", "shoes", "accessories"], tags: "малберри сумки великобритания лондон" },
+];
+
+const cityContainer = document.querySelector("#cities");
+const typeContainer = document.querySelector("#types");
 const cardContainer = document.querySelector("#cards");
 const searchInput = document.querySelector("#search");
 const resultsLabel = document.querySelector("#results-label");
 const emptyState = document.querySelector("#empty-state");
 const resetButton = document.querySelector("#reset");
 
-let activeCategory = "all";
+let activeCity = "all";
+let activeType = "all";
 
-function renderCategories() {
-  const allButton = createCategoryButton("all", "Все", sites.length);
-  categoryContainer.replaceChildren(allButton);
-
-  categories.forEach((category) => {
-    const count = sites.filter((site) => site.category === category.id).length;
-    categoryContainer.append(createCategoryButton(category.id, category.label, count));
-  });
-}
-
-function createCategoryButton(id, label, count) {
+function createFilterButton(id, label, selected, onSelect, count) {
   const button = document.createElement("button");
   button.type = "button";
   button.className = "category-button";
-  button.setAttribute("aria-pressed", String(activeCategory === id));
-  button.dataset.category = id;
-  button.innerHTML = `${label}<span class="category-count">${count}</span>`;
+  button.setAttribute("aria-pressed", String(selected === id));
+  button.dataset.filter = id;
+  button.textContent = label;
+  if (count !== undefined) {
+    const countLabel = document.createElement("span");
+    countLabel.className = "category-count";
+    countLabel.textContent = String(count);
+    button.append(countLabel);
+  }
   button.addEventListener("click", () => {
-    activeCategory = id;
-    renderCategories();
-    renderSites();
+    onSelect(id);
+    renderFilters();
+    renderStores();
   });
   return button;
 }
 
-function renderSites() {
-  const query = searchInput.value.trim().toLocaleLowerCase("ru");
-  const filteredSites = sites.filter((site) => {
-    const matchesCategory = activeCategory === "all" || site.category === activeCategory;
-    const categoryLabel = categories.find((category) => category.id === site.category).label;
-    const searchableText = `${site.name} ${site.description} ${site.tags} ${categoryLabel}`.toLocaleLowerCase("ru");
-    return matchesCategory && searchableText.includes(query);
-  });
-
-  cardContainer.replaceChildren(...filteredSites.map(createSiteCard));
-  cardContainer.hidden = filteredSites.length === 0;
-  emptyState.hidden = filteredSites.length > 0;
-  const noun = filteredSites.length === 1 ? "сайт" : filteredSites.length > 1 && filteredSites.length < 5 ? "сайта" : "сайтов";
-  resultsLabel.textContent = `Найдено ${filteredSites.length} ${noun}`;
-  resetButton.hidden = !query && activeCategory === "all";
+function getStoresForCity(cityId) {
+  return cityId === "all" ? stores : stores.filter((store) => store.city === cityId);
 }
 
-function createSiteCard(site) {
-  const categoryLabel = categories.find((category) => category.id === site.category).label;
+function renderFilters() {
+  const cityFilters = [{ id: "all", label: "Все города" }, ...cities];
+  cityContainer.replaceChildren(...cityFilters.map((city) => {
+    const count = getStoresForCity(city.id).length;
+    return createFilterButton(city.id, city.label, activeCity, (id) => { activeCity = id; }, count);
+  }));
+
+  const typeFilters = [{ id: "all", label: "Любая вещь" }, ...types];
+  typeContainer.replaceChildren(...typeFilters.map((type) => {
+    const count = getStoresForCity(activeCity).filter((store) => type.id === "all" || store.types.includes(type.id)).length;
+    return createFilterButton(type.id, type.label, activeType, (id) => { activeType = id; }, count);
+  }));
+}
+
+function getFilteredStores() {
+  const query = searchInput.value.trim().toLocaleLowerCase("ru");
+  return stores.filter((store) => {
+    const matchesCity = activeCity === "all" || store.city === activeCity;
+    const matchesType = activeType === "all" || store.types.includes(activeType);
+    const cityName = cities.find((city) => city.id === store.city).label;
+    const typeNames = store.types.map((typeId) => types.find((type) => type.id === typeId).label).join(" ");
+    const searchableText = `${store.name} ${store.description} ${store.tags} ${cityName} ${typeNames}`.toLocaleLowerCase("ru");
+    return matchesCity && matchesType && searchableText.includes(query);
+  });
+}
+
+function getStoreNoun(count) {
+  const remainder10 = count % 10;
+  const remainder100 = count % 100;
+  if (remainder10 === 1 && remainder100 !== 11) return "магазин";
+  if (remainder10 >= 2 && remainder10 <= 4 && (remainder100 < 12 || remainder100 > 14)) return "магазина";
+  return "магазинов";
+}
+
+function createStoreCard(store) {
+  const cityName = cities.find((city) => city.id === store.city).label;
+  const typeNames = store.types.map((typeId) => types.find((type) => type.id === typeId).label).join(" · ");
   const article = document.createElement("article");
-  article.className = "site-card";
+  article.className = "site-card store-card";
 
   const top = document.createElement("div");
   top.className = "card-top";
   const logo = document.createElement("span");
   logo.className = "site-logo";
-  logo.textContent = site.mark;
-  logo.style.backgroundColor = site.color;
-  logo.style.color = site.ink;
+  logo.textContent = store.mark;
+  logo.style.backgroundColor = store.color;
+  logo.style.color = store.ink;
   logo.setAttribute("aria-hidden", "true");
-  const arrow = document.createElement("span");
-  arrow.className = "card-arrow";
-  arrow.textContent = "↗";
-  arrow.setAttribute("aria-hidden", "true");
-  top.append(logo, arrow);
+
+  const city = document.createElement("span");
+  city.className = `store-city city-${store.city}`;
+  city.textContent = cityName;
+  top.append(logo, city);
 
   const title = document.createElement("h3");
-  title.textContent = site.name;
+  title.textContent = store.name;
   const description = document.createElement("p");
-  description.textContent = site.description;
-  const category = document.createElement("span");
-  category.className = "card-category";
-  category.textContent = categoryLabel;
+  description.textContent = store.description;
+  const cardCategory = document.createElement("span");
+  cardCategory.className = "card-category";
+  cardCategory.textContent = typeNames;
+
   const link = document.createElement("a");
   link.className = "card-link";
-  link.href = site.url;
+  link.href = store.url;
   link.target = "_blank";
   link.rel = "noopener noreferrer";
-  link.setAttribute("aria-label", `${site.name} — открыть сайт в новой вкладке`);
+  link.setAttribute("aria-label", `${store.name} — открыть официальный онлайн-магазин в новой вкладке`);
 
-  article.append(top, title, description, category, link);
+  const arrow = document.createElement("span");
+  arrow.className = "card-arrow store-arrow";
+  arrow.textContent = "↗";
+  arrow.setAttribute("aria-hidden", "true");
+  top.append(arrow);
+
+  const action = document.createElement("span");
+  action.className = "store-action";
+  action.textContent = "Перейти в магазин";
+  article.append(top, title, description, cardCategory, action, link);
   return article;
 }
 
-function resetFilters() {
-  activeCategory = "all";
-  searchInput.value = "";
-  renderCategories();
-  renderSites();
+function renderStores() {
+  const filteredStores = getFilteredStores();
+  cardContainer.replaceChildren(...filteredStores.map(createStoreCard));
+  cardContainer.hidden = filteredStores.length === 0;
+  emptyState.hidden = filteredStores.length > 0;
+  resultsLabel.textContent = `Найдено ${filteredStores.length} ${getStoreNoun(filteredStores.length)}`;
+  resetButton.hidden = !searchInput.value.trim() && activeCity === "all" && activeType === "all";
 }
 
-searchInput.addEventListener("input", renderSites);
+function resetFilters() {
+  activeCity = "all";
+  activeType = "all";
+  searchInput.value = "";
+  renderFilters();
+  renderStores();
+}
+
+searchInput.addEventListener("input", renderStores);
 resetButton.addEventListener("click", resetFilters);
 document.querySelector("#empty-reset").addEventListener("click", resetFilters);
 document.addEventListener("keydown", (event) => {
@@ -124,10 +178,10 @@ document.addEventListener("keydown", (event) => {
   }
   if (event.key === "Escape" && document.activeElement === searchInput) {
     searchInput.value = "";
-    renderSites();
+    renderStores();
     searchInput.blur();
   }
 });
 
-renderCategories();
-renderSites();
+renderFilters();
+renderStores();
